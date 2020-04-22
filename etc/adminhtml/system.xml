@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Mediarox_IdealoTrackingPixel
+ * @copyright Copyright 2020(c) mediarox UG (haftungsbeschraenkt) (http://www.mediarox.de)
+ * @author Marcus Bernt <mbernt@mediarox.de>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mediarox">
+            <label>Mediarox</label>
+        </tab>
+        <section id="mediarox_idealo_tracking" showInStore="1" showInWebsite="1" showInDefault="1" translate="label">
+            <tab>mediarox</tab>
+            <label>Mediarox Idealo Tracking</label>
+            <resource>Mediarox_IdealoTrackingPixel::config_mediarox_idealo_pixel</resource>
+            <group id="general" showInStore="1" showInWebsite="1" showInDefault="1" translate="label">
+                <field id="enable" showInStore="1" showInWebsite="1" showInDefault="1" translate="label" type="select">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="partner_code" showInStore="1" showInWebsite="1" showInDefault="1" translate="label" type="text">
+                    <label>Partner Code</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="mediarox_idealo_tracking/general/enable">1</field>
+                    </depends>
+                </field>
+                <field id="manufacturer" showInStore="1" showInWebsite="1" showInDefault="1" translate="label" type="select">
+                    <label>Manufacturer Attribute</label>
+                    <source_model>Mediarox\IdealoTrackingPixel\Model\Config\Source\ManufacturerOptions</source_model>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="mediarox_idealo_tracking/general/enable">1</field>
+                    </depends>
+                </field>
+
+            </group>
+        </section>
+    </system>
+</config>
