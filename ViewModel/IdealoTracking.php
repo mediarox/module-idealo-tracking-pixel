@@ -69,6 +69,9 @@ class IdealoTracking implements ArgumentInterface
     {
         $this->order = $this->checkoutSession->getLastRealOrder();
         $idealoId = $this->checkoutSession->getIdealoId();
+        if (!$idealoId) {
+            return '';
+        }
         $orderItems = $this->getOrderItemsJson();
         $trackingData = [
             'trc' => 'basket', /* idealo tracking category */
